@@ -7,15 +7,12 @@
 //
 
 #import <Cordova/CDV.h>
+#import <iZettleSDK/iZettleSDK.h>
 
 @interface iZettle : CDVPlugin
 
+- (void) initIZettle:(CDVInvokedUrlCommand*)command;
 - (void) chargeAmount:(CDVInvokedUrlCommand*)command;
-- (void) settings:(CDVInvokedUrlCommand*)command;
-- (void) retrievePaymentInfoForReference:(CDVInvokedUrlCommand*)command;
-- (void) refundPaymentWithReference:(CDVInvokedUrlCommand*)command;
-- (void) abortOperation:(CDVInvokedUrlCommand*)command;
-- (NSDictionary*) convertPaymentInfo: (id)paymentInfo;
-
+- (NSDictionary*) convertPaymentInfo:(iZettleSDKPaymentInfo *)paymentInfo;
 
 @end
