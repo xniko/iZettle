@@ -1,0 +1,31 @@
+{
+  "name": "iZettle",
+  "version": "0.1.0",
+  "description": "Cordova plugin for iOS iZettle SDK",
+  "cordova": {
+    "id": "cordova-plugin-izettle",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xniko/iZettle.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.4.0"
+    }
+  ],
+  "author": "Niko Kallio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xniko/iZettle/issues"
+  },
+  "homepage": "https://github.com/xniko/iZettle#readme"
+}
