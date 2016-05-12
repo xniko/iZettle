@@ -1,0 +1,97 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/Cellar/node/5.3.0/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'publish',
+1 verbose cli   '/Users/nikokallio/Documents/projects/iZettle' ]
+2 info using npm@3.3.12
+3 info using node@v5.3.0
+4 verbose publish [ '/Users/nikokallio/Documents/projects/iZettle' ]
+5 silly cache add args [ '/Users/nikokallio/Documents/projects/iZettle', null ]
+6 verbose cache add spec /Users/nikokallio/Documents/projects/iZettle
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '/Users/nikokallio/Documents/projects/iZettle',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '/Users/nikokallio/Documents/projects/iZettle',
+7 silly cache add   spec: '/Users/nikokallio/Documents/projects/iZettle',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/nikokallio/.npm/iZettle/0.1.0/package.tgz not in flight; packing
+9 info lifecycle iZettle@0.1.0~prepublish: iZettle@0.1.0
+10 silly lifecycle iZettle@0.1.0~prepublish: no script for prepublish, continuing
+11 verbose tar pack [ '/Users/nikokallio/.npm/iZettle/0.1.0/package.tgz',
+11 verbose tar pack   '/Users/nikokallio/Documents/projects/iZettle' ]
+12 verbose tarball /Users/nikokallio/.npm/iZettle/0.1.0/package.tgz
+13 verbose folder /Users/nikokallio/Documents/projects/iZettle
+14 verbose addLocalTarball adding from inside cache /Users/nikokallio/.npm/iZettle/0.1.0/package.tgz
+15 silly cache afterAdd iZettle@0.1.0
+16 verbose afterAdd /Users/nikokallio/.npm/iZettle/0.1.0/package/package.json not in flight; writing
+17 verbose afterAdd /Users/nikokallio/.npm/iZettle/0.1.0/package/package.json written
+18 silly publish { name: 'iZettle',
+18 silly publish   version: '0.1.0',
+18 silly publish   description: 'Cordova plugin for iOS iZettle SDK',
+18 silly publish   cordova: { id: 'cordova-plugin-izettle', platforms: [ 'ios' ] },
+18 silly publish   repository: { type: 'git', url: 'git+https://github.com/xniko/iZettle.git' },
+18 silly publish   keywords: [ 'ecosystem:cordova', 'cordova-ios' ],
+18 silly publish   engines: [ { name: 'cordova', version: '>=3.4.0' } ],
+18 silly publish   author: { name: 'Niko Kallio' },
+18 silly publish   license: 'ISC',
+18 silly publish   bugs: { url: 'https://github.com/xniko/iZettle/issues' },
+18 silly publish   homepage: 'https://github.com/xniko/iZettle#readme',
+18 silly publish   readme: '# iZettle\nPlugin for Cordova\n\n\nUntil I get the time, this is the quick install\n\n1. Add platform ios\n2. Build ios\n3. Follow the instructions on https://github.com/iZettle/sdk-ios\n4. add plugin\n5. Ready\n\n#Functions\n\n##Charge\nPerform a payment with an amount and a reference.\n\t\n\tchargeAmount( apiKey, amount, currency, reference );\n\n- **apiKey**: The API key from iZettle\n- **amount**: The amount to be charged in the logged in users currency.\n- **currency**: Only used for validation. If the value of this parameter doesn\'t match the users currency the user will be notified and then logged out. For a complete list of valid currency codes, see [ISO 4217](http://www.xe.com/iso4217.php)\n- **reference**: The payment reference. Used to identify an iZettle payment, used when retrieving payment information at a later time or performing a refund. Max length 128.\n',
+18 silly publish   readmeFilename: 'README.md',
+18 silly publish   gitHead: 'a614c03a5f65e2cca2a85a490af9a5903346913b',
+18 silly publish   _id: 'iZettle@0.1.0',
+18 silly publish   scripts: {},
+18 silly publish   _shasum: '859ff0e2724c126398b657594063a167defa0014',
+18 silly publish   _from: '.' }
+19 verbose getPublishConfig undefined
+20 silly mapToRegistry name iZettle
+21 silly mapToRegistry using default registry
+22 silly mapToRegistry registry https://registry.npmjs.org/
+23 silly mapToRegistry uri https://registry.npmjs.org/iZettle
+24 verbose publish registryBase https://registry.npmjs.org/
+25 silly publish uploading /Users/nikokallio/.npm/iZettle/0.1.0/package.tgz
+26 verbose request uri https://registry.npmjs.org/iZettle
+27 verbose request sending authorization for write operation
+28 info attempt registry request try #1 at 1:19:35 PM
+29 verbose request using bearer token for auth
+30 verbose request id d2c313c789536973
+31 http request PUT https://registry.npmjs.org/iZettle
+32 http 403 https://registry.npmjs.org/iZettle
+33 verbose headers { 'content-type': 'application/json',
+33 verbose headers   'cache-control': 'max-age=300',
+33 verbose headers   'content-length': '95',
+33 verbose headers   'accept-ranges': 'bytes',
+33 verbose headers   date: 'Thu, 12 May 2016 06:19:38 GMT',
+33 verbose headers   via: '1.1 varnish',
+33 verbose headers   connection: 'keep-alive',
+33 verbose headers   'x-served-by': 'cache-ams4144-AMS',
+33 verbose headers   'x-cache': 'MISS',
+33 verbose headers   'x-cache-hits': '0',
+33 verbose headers   'x-timer': 'S1463033977.129869,VS0,VE1303',
+33 verbose headers   vary: 'Accept-Encoding' }
+34 verbose request invalidating /Users/nikokallio/.npm/registry.npmjs.org/iZettle on PUT
+35 error publish Failed PUT 403
+36 verbose stack Error: "You cannot publish over the previously published version 0.1.0." : iZettle
+36 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+36 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:252:14)
+36 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+36 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:198:22)
+36 verbose stack     at emitTwo (events.js:87:13)
+36 verbose stack     at Request.emit (events.js:172:7)
+36 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1082:10)
+36 verbose stack     at emitOne (events.js:82:20)
+36 verbose stack     at Request.emit (events.js:169:7)
+36 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1009:12)
+37 verbose statusCode 403
+38 verbose pkgid iZettle
+39 verbose cwd /Users/nikokallio/Documents/projects/iZettle
+40 error Darwin 15.4.0
+41 error argv "/usr/local/Cellar/node/5.3.0/bin/node" "/usr/local/bin/npm" "publish" "/Users/nikokallio/Documents/projects/iZettle"
+42 error node v5.3.0
+43 error npm  v3.3.12
+44 error code E403
+45 error "You cannot publish over the previously published version 0.1.0." : iZettle
+46 error If you need help, you may report this error at:
+46 error     <https://github.com/npm/npm/issues>
+47 verbose exit [ 1, true ]
