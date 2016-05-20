@@ -60,6 +60,12 @@ NSNumberFormatter *_numberFormatter;
     }];
 }
 
+- (void) setEnforcedUserAccount:(CDVInvokedUrlCommand*)command {
+    NSString* email = [[command arguments] objectAtIndex:0];
+    [iZettleSDK shared].enforcedUserAccount = email;
+    NSLog(@"Forced account: %@", [iZettleSDK shared].enforcedUserAccount);
+}
+
 - (NSDictionary*) convertPaymentInfo:(iZettleSDKPaymentInfo *)paymentInfo {
     return @{
              @"referenceNumber": @"referenceNumber",

@@ -12,10 +12,19 @@ Until I get the time, this is the quick install
 
 #Functions
 
+##Init
+
+	initIZettle( apiKey );
+
+##Force an account
+
+	setEnforcedUserAccount( stringAccount );
+
+
 ##Charge
 Perform a payment with an amount and a reference.
 	
-	chargeAmount( apiKey, amount, currency, reference );
+	chargeAmount( amount, reference, onSuccessCalmlback, onFailedCallback );
 
 - **apiKey**: The API key from iZettle
 - **amount**: The amount to be charged in the logged in users currency.
