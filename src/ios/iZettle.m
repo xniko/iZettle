@@ -35,27 +35,16 @@ NSNumberFormatter *_numberFormatter;
         _lastError = error;
         _timestamp = [NSDate date];
 
+        CDVPluginResult* result = nil;
+        NSString* msg = [NSString stringWithFormat: @"%@", _lastReference];
+
         if (paymentInfo != nil) {
-
-            NSString* msg = [NSString stringWithFormat: @"GOOD, %@", _lastReference];
-            CDVPluginResult* result = [CDVPluginResult
-                                       resultWithStatus:CDVCommandStatus_OK
-                                       messageAsString:msg];
-
-
-            [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
-
-
+            result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:msg];
 
         } else {
-
-            NSString* msg = [NSString stringWithFormat: @"BAD, %@", _lastReference];
-            CDVPluginResult* result = [CDVPluginResult
-                                       resultWithStatus:CDVCommandStatus_OK
-                                       messageAsString:msg];
-
-            [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+            result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:msg];
         }
+        [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 
     }];
 }
