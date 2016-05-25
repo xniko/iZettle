@@ -13,6 +13,7 @@
 
 - (void) initIZettle:(CDVInvokedUrlCommand*)command;
 - (void) chargeAmount:(CDVInvokedUrlCommand*)command;
+- (void) setEnforcedUserAccount:(CDVInvokedUrlCommand*)command;
 - (NSDictionary*) convertPaymentInfo:(iZettleSDKPaymentInfo *)paymentInfo;
 
 @end
