@@ -13,8 +13,5 @@ module.exports = {
     },
     settings: function () {
 	    cordova.exec(function(){}, function(){}, "iZettle", "settings");
-    },
-    retrievePaymentInfoForReference: function(successCallback, errorCallback, api, rPIFR) {
-	   cordova.exec(successCallback, errorCallback, "iZettle", "retrievePaymentInfoForReference", [api, rPIFR]);
-    },
+    }
 };
