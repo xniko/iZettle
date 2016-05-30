@@ -56,6 +56,8 @@ NSNumberFormatter *_numberFormatter;
 
             [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
         }
+    }];
+}
 
     
 
