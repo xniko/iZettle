@@ -60,6 +60,23 @@ NSNumberFormatter *_numberFormatter;
     }];
 }
 
+- (void) retrievePaymentInfoForReference:(CDVInvokedUrlCommand *)command {
+    NSString* reference = [command.arguments objectAtIndex:0];
+    [[iZettleSDK shared] retrievePaymentInfoForReference:reference completion:^(iZettleSDKPaymentInfo *paymentInfo, NSError *error) {
+        if (paymentInfo != nil) {
+            CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:[self convertPaymentInfo: paymentInfo]];
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+        } else {
+            CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString: error.localizedDescription ];
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+        }
+    }];
+}
+
+- (void) settings:(CDVInvokedUrlCommand *)command {
+    [[iZettleSDK shared] presentSettingsFromViewController:self.viewController];
+}
+
 - (NSDictionary*) convertPaymentInfo:(iZettleSDKPaymentInfo *)paymentInfo {
     return @{
              @"referenceNumber": @"referenceNumber",
