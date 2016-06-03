@@ -20,8 +20,15 @@ Until I get the time, this is the quick install
 
 	setEnforcedUserAccount( stringAccount );
 
-Not work for the moment
+**Need iZettle SDK 1.2.4+ on iPhone**
 
+##Retrieve payment info for a reference
+
+	retrievePaymentInfoForReference (reference, onSuccessCallback, onFailedCallback );
+
+##Present settings
+
+	settings();
 
 ##Charge
 Perform a payment with an amount and a reference.
