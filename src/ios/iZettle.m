@@ -35,18 +35,47 @@ NSNumberFormatter *_numberFormatter;
         _lastError = error;
         _timestamp = [NSDate date];
 
-        CDVPluginResult* result = nil;
-        NSString* msg = [NSString stringWithFormat: @"%@", _lastReference];
-
         if (paymentInfo != nil) {
-            result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:msg];
+
+            NSString* msg = [NSString stringWithFormat: @"GOOD, %@", _lastReference];
+            CDVPluginResult* result = [CDVPluginResult
+                                       resultWithStatus:CDVCommandStatus_OK
+                                       messageAsString:msg];
+
+
+            [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+
+
 
         } else {
-            result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:msg];
-        }
-        [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 
+            NSString* msg = [NSString stringWithFormat: @"BAD, %@", _lastReference];
+            CDVPluginResult* result = [CDVPluginResult
+                                       resultWithStatus:CDVCommandStatus_OK
+                                       messageAsString:msg];
+
+            [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+        }
     }];
+}
+
+    
+
+- (void) retrievePaymentInfoForReference:(CDVInvokedUrlCommand *)command {
+    NSString* reference = [command.arguments objectAtIndex:0];
+    [[iZettleSDK shared] retrievePaymentInfoForReference:reference completion:^(iZettleSDKPaymentInfo *paymentInfo, NSError *error) {
+        if (paymentInfo != nil) {
+            CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:[self convertPaymentInfo: paymentInfo]];
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+        } else {
+            CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString: error.localizedDescription ];
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+        }
+    }];
+}
+
+- (void) settings:(CDVInvokedUrlCommand *)command {
+    [[iZettleSDK shared] presentSettingsFromViewController:self.viewController];
 }
 
 - (void) setEnforcedUserAccount:(CDVInvokedUrlCommand*)command {
