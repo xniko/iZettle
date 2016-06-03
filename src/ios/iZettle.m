@@ -63,14 +63,13 @@ NSNumberFormatter *_numberFormatter;
 
 - (void) retrievePaymentInfoForReference:(CDVInvokedUrlCommand *)command {
     NSString* reference = [command.arguments objectAtIndex:0];
-    [[iZettleSDK shared] retrievePaymentInfoForReference:reference completion:^(iZettleSDKPaymentInfo *paymentInfo, NSError *error) {
-        if (paymentInfo != nil) {
+    [[iZettleSDK shared] retrievePaymentInfoForReference:reference presentFromViewController:self.viewController completion:^(iZettleSDKPaymentInfo *paymentInfo, NSError *error){
+        if(paymentInfo != nil) {
             CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:[self convertPaymentInfo: paymentInfo]];
-            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
         } else {
             CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString: error.localizedDescription ];
-            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
         }
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }];
 }
 
@@ -81,7 +80,6 @@ NSNumberFormatter *_numberFormatter;
 - (void) setEnforcedUserAccount:(CDVInvokedUrlCommand*)command {
     NSString* email = [[command arguments] objectAtIndex:0];
     [iZettleSDK shared].enforcedUserAccount = email;
-    NSLog(@"Forced account: %@", [iZettleSDK shared].enforcedUserAccount);
 }
 
 - (NSDictionary*) convertPaymentInfo:(iZettleSDKPaymentInfo *)paymentInfo {
